@@ -113,11 +113,11 @@
 
         .hero-title {
             font-family: 'Caveat', cursive;
-            font-size: clamp(3.5rem, 12vw, 7.5rem);
+            font-size: clamp(3rem, 12vw, 7.5rem);
             font-weight: 700;
             color: var(--brown);
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             opacity: 0;
             animation: fadeUp 1s ease forwards 0.5s;
         }
@@ -130,7 +130,7 @@
 
         .hero-image-wrap {
             position: relative;
-            margin: 3rem 0;
+            margin: 2.5rem 0;
             opacity: 0;
             animation: fadeUp 1s ease forwards 0.7s;
             z-index: 5;
@@ -139,7 +139,7 @@
         .hero-image-wrap::before {
             content: '';
             position: absolute;
-            inset: -15px;
+            inset: -12px;
             border: 2px solid var(--peach);
             border-radius: 50% 45% 55% 40% / 40% 55% 45% 50%;
             animation: morphBorder 10s ease-in-out infinite;
@@ -148,7 +148,7 @@
         .hero-image-wrap::after {
             content: '';
             position: absolute;
-            inset: -30px;
+            inset: -24px;
             border: 1px dashed var(--rose);
             border-radius: 45% 55% 40% 60% / 55% 40% 60% 45%;
             opacity: 0.3;
@@ -156,14 +156,23 @@
         }
 
         .hero-image {
-            width: min(350px, 80vw);
-            height: min(350px, 80vw);
+            width: min(320px, 80vw);
+            height: min(320px, 80vw);
             border-radius: 50% 45% 55% 40% / 40% 55% 45% 50%;
             object-fit: cover;
             object-position: center 20%;
             display: block;
             box-shadow: 0 25px 70px rgba(92, 61, 46, 0.2);
             animation: morphBorder 10s ease-in-out infinite;
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 260px;
+                height: 260px;
+            }
+            .hero-image-wrap::before { inset: -10px; }
+            .hero-image-wrap::after { inset: -20px; }
         }
 
         /* floating petals */
@@ -213,6 +222,10 @@
             backdrop-filter: blur(10px);
         }
 
+        @media (max-width: 600px) {
+            .love-is-card { padding: 2.5rem 1.5rem; margin-bottom: 3.5rem; }
+        }
+
         .love-is-card::before {
             content: attr(data-love);
             position: absolute;
@@ -232,7 +245,7 @@
 
         .love-is-top {
             font-family: 'Caveat', cursive;
-            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            font-size: clamp(2rem, 8vw, 3.5rem);
             color: var(--brown);
             text-align: center;
             margin-bottom: 2rem;
@@ -255,6 +268,14 @@
             margin: 0 auto;
         }
 
+        @media (max-width: 768px) {
+            .section { padding: 4rem 1.25rem; }
+        }
+
+        @media (max-width: 380px) {
+            .section { padding: 3.5rem 1rem; }
+        }
+
         .section-label {
             font-family: 'Caveat', cursive;
             font-size: 1.1rem;
@@ -267,7 +288,7 @@
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-size: clamp(2rem, 8vw, 3.8rem);
             color: var(--brown);
             text-align: center;
             margin-bottom: 2.5rem;
@@ -385,6 +406,11 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.03);
         }
 
+        @media (max-width: 600px) {
+            .quote-block { padding: 2.5rem 1.5rem 2.5rem 2rem; margin: 3rem auto; }
+            .quote-block::before { font-size: 3.5rem; top: -10px; left: 10px; }
+        }
+
         .quote-block::before {
             content: '❝';
             position: absolute;
@@ -416,6 +442,10 @@
             max-width: 700px;
             margin: 0 auto;
             box-shadow: 0 20px 50px rgba(90, 122, 90, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .club-card { padding: 3rem 1.5rem; border-radius: 20px; }
         }
 
         .club-card::before {
