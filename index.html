@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никакого сахара. Только любовь.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-milky: #fdfaf6;
+            --color-peach: #fbeedb;
+            --color-terracotta: #c57b57;
+            --color-sage: #8da192;
+            --color-beige: #f5f0e1;
+            --color-text: #4a3c31;
+            --color-text-light: #7e6c5c;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-milky);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(180deg, var(--color-peach) 0%, var(--color-milky) 100%);
+            padding: 0;
+            opacity: 1;
+            transform: none;
+        }
+
+        .hero-avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 4px solid #fff;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-text-light);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* --- About --- */
+        .about-flex {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-light);
+        }
+
+        .about-image img {
+            border-radius: 2px;
+            box-shadow: 20px 20px 0 var(--color-beige);
+        }
+
+        /* --- Sweets --- */
+        .sweets {
+            background-color: #fff9f4;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 1.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .quote-box {
+            text-align: center;
+            max-width: 800px;
+            margin: 6rem auto 0;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--color-beige);
+            border-bottom: 1px solid var(--color-beige);
+        }
+
+        .quote-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            line-height: 1.2;
+            color: var(--color-terracotta);
+        }
+
+        /* --- Soul --- */
+        .soul-flex {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .soul-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .soul-grid img {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .soul-grid img:first-child {
+            grid-column: span 2;
+            height: 400px;
+        }
+
+        /* --- Club --- */
+        .club {
+            background-color: var(--color-sage);
+            color: #fff;
+            text-align: center;
+        }
+
+        .club h2 {
+            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .club p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.4s ease;
+        }
+
+        .btn-link:hover {
+            background: #fff;
+            color: var(--color-sage);
+        }
+
+        /* --- Life/Love --- */
+        .love {
+            padding-bottom: 0;
+        }
+
+        .love-container {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 0;
+            background: var(--color-peach);
+            overflow: hidden;
+        }
+
+        .love-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .love-content {
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .love-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .love-content p {
+            font-size: 1.15rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--color-text-light);
+        }
+
+        /* --- Contact --- */
+        .contact {
+            text-align: center;
+            padding: 8rem 0;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icon {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            border-bottom: 1px solid transparent;
+        }
+
+        .social-icon:hover {
+            color: var(--color-terracotta);
+            border-bottom: 1px solid var(--color-terracotta);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #ccc;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-flex, .soul-flex, .love-container {
+                grid-template-columns: 1fr;
+            }
+            .love-content { padding: 4rem 2rem; }
+            .section-header h2 { font-size: 2.2rem; }
+            .about-image { order: -1; }
+            .soul-grid { grid-template-columns: 1fr; }
+            .soul-grid img:first-child { grid-column: span 1; }
+            .quote-box p { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <img src="1_screen_wife.png" alt="Юлия" class="hero-avatar">
+        <h1>Юлия</h1>
+        <p class="hero-slogan">«Никакого сахара. Только любовь»</p>
+    </section>
+
+    <div class="container">
+        <section id="about">
+            <div class="about-flex">
+                <div class="about-text">
+                    <h2>Юлия</h2>
+                    <p>Быть осознанным — значит быть счастливым. Это не просто слова, это то, как я живу каждый день. Я создала Raw Vegan Club, чтобы доказать: растительная еда может быть яркой, вкусной и настоящей — без компромиссов с телом и совестью.</p>
+                    <p>Я шью вещи своими руками, готовлю торты без единого грамма сахара и верю, что забота о себе начинается с того, что мы кладём в тарелку и надеваем на тело.</p>
+                </div>
+                <div class="about-image">
+                    <img src="1_screen_wife.png" alt="Юлия">
+                </div>
+            </div>
+        </section>
+
+        <section id="sweets" class="sweets-block">
+            <div class="section-header">
+                <h2>Сладкое без компромиссов</h2>
+                <p>Ореховые торты с манго и цитрусовой ноткой, пастила без сахара, гречично-шоколадные батончики, чиа-пудинги. Каждый рецепт — это мой поиск баланса между вкусом и заботой о теле. Ни грамма рафинированного сахара. Ни одного животного ингредиента. Только живые продукты — и много любви.</p>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="cake1.jpg" alt="Raw vegan сладости">
+                </div>
+                <div class="gallery-item">
+                    <img src="cake2.jpg" alt="Веганский торт">
+                </div>
+                <div class="gallery-item">
+                    <img src="cake3.jpg" alt="Натуральные конфеты">
+                </div>
+            </div>
+            <div class="quote-box">
+                <p>«Есть, чтобы жить, а не жить, чтобы есть»</p>
+            </div>
+        </section>
+
+        <section id="sewing">
+            <div class="soul-flex">
+                <div class="soul-grid">
+                    <img src="sew1.jpg" alt="Ручная работа">
+                    <img src="sew2.jpg" alt="Льняная одежда">
+                    <img src="sew3.jpg" alt="Аксессуары">
+                </div>
+                <div class="about-text">
+                    <h2>Сшито с душой</h2>
+                    <p>Осознанность — это не только про еду. Это про всё, к чему прикасаешься. Я шью вещи так, как готовлю: вдумчиво, из честных материалов, без спешки. Каждая вещь — это разговор между моими руками и тканью, который длится часами.</p>
+                    <p>Плащи из натурального льна, сумки, бельё — ничего лишнего, только то, что хочется носить каждый день и передавать дальше.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="club" class="club">
+        <div class="container">
+            <h2>Raw Vegan Club</h2>
+            <p>Я создала Raw Vegan Club — сообщество из более чем тысячи людей, объединённых одной идеей: питаться осознанно, жить в гармонии с собой и делиться рецептами, которые делают эту жизнь вкуснее. Марафоны рецептов, живые встречи, поддержка каждый день.</p>
+            <a href="https://t.me/rawveganclub" class="btn-link">Перейти в канал</a>
+        </div>
+    </section>
+
+    <section id="love" class="love">
+        <div class="love-container">
+            <div class="love-image">
+                <img src="happy2.jpg" alt="Семья и любовь">
+            </div>
+            <div class="love-content">
+                <h2>Счастье — это выбор, который делаешь каждый день</h2>
+                <p>«В ведах говорится, что два человека встречаются не случайно — их приводит друг к другу карма многих жизней. Любовь — это не чувство, которое приходит и уходит. Это решение. Каждый день. Быть рядом, расти вместе, видеть в другом человеке отражение своей лучшей версии. Счастливая семья — это не идеальные условия. Это двое, которые выбирают друг друга снова и снова».</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 • Юлия • Никакого сахара. Только любовь.</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
